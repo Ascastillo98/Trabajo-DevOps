@@ -1,4 +1,4 @@
-package es.uca.mps.matrix;
+package es.uca.mps.matrix.core;
 
 /**
  * Hello world!
