@@ -7,6 +7,9 @@ public class Opmatrix {
 	private static Matrix C;
 	
 	public Opmatrix(Matrix A, Matrix B, Matrix C) {
+		if(A.getFilas() != B.getFilas() || A.getFilas() != C.getFilas()) {
+			throw new IllegalArgumentException("Las matrices deben tener las mismas dimensiones");
+		}
 		this.A = A;
 		this.B = B;
 		this.C = C;
@@ -35,7 +38,7 @@ public class Opmatrix {
 			for(int j = 0; j < A.getColumnas(); j++) {
 				int mult = 0;
 				for(int k = 0; k < A.getFilas(); k++)
-				mult += A.getValor(i, j) * B.getValor(i, j);
+					mult += A.getValor(i, k) * B.getValor(k, j);
 				C.setValor(i, j, mult);
 			}
 		}
