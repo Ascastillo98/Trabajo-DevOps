@@ -32,4 +32,12 @@ public class Opmatrix {
 		}
 	}
 	
+	public static void scalarProductMatrix(int prod) {
+		for(int i = 0; i < A.getFilas(); i++) {
+			for(int j = 0; j < A.getColumnas(); j++) {
+				C.setValor(i, j, prod * A.getValor(i, j));
+			}
+		}
+	}
+	
 }
