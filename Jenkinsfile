@@ -23,7 +23,10 @@ pipeline {
         }
         stage('Scan') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.projectKey=Ascastillo98_Trabajo-DevOps'
+                    withSonarQubeEnv('SonarCloud') {
+                        sh 'mvn sonar:sonar -Dsonar.projectKey=Ascastillo98_Trabajo-DevOps'
+                    }
+                }
             }
         }
     }
