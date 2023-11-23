@@ -42,8 +42,8 @@ public class Matrix {
 				matrix[i][j] = 0;
 			}
 		}
-		this.filas = matrix.length;
-		this.columnas = matrix[0].length;
+		this.filas = dimensiones;
+		this.columnas = dimensiones;
 	}
 	
 	public int getFilas() {
