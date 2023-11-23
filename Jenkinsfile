@@ -21,5 +21,10 @@ pipeline {
                 }
             }
         }
+        stage('Scan'){
+            steps{
+                echo $SONAR_COMMAND
+                mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=$SONAR_COMMAND
+            }
     }
 }
