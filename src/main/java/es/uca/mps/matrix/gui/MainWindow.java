@@ -3,14 +3,15 @@ package es.uca.mps.matrix.gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
+import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.CardLayout;
+import javax.swing.JLabel;
 
 public class MainWindow {
 
@@ -37,10 +38,10 @@ public class MainWindow {
 	 */
 	public MainWindow() {
 		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-		}
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
 		initialize();
 	}
 
@@ -59,26 +60,34 @@ public class MainWindow {
 		JMenu mnMatrices = new JMenu("Matrices");
 		menuBar.add(mnMatrices);
 		
-		JMenu mnOperacion = new JMenu("Operaciones");
-		mnMatrices.add(mnOperacion);
+		JMenu mnOperaciones = new JMenu("Operaciones");
+		mnMatrices.add(mnOperaciones);
 		
-		JMenuItem mnitSumar = new JMenuItem("Sumar");
-		mnitSumar.addActionListener(new ActionListener() {
+		JMenuItem mntmSumar = new JMenuItem("Sumar");
+		mntmSumar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmMatrixCalculator = new FrmSuma();
-				frmMatrixCalculator.setVisible(true);
+				FrSumar frSumar = new FrSumar();
+				frSumar.setVisible(true);
+				frmMatrixCalculator.setVisible(false);
 			}
 		});
-		mnOperacion.add(mnitSumar);
+		mnOperaciones.add(mntmSumar);
 		
-		JMenuItem mnitRestar = new JMenuItem("Restar");
-		mnOperacion.add(mnitRestar);
+		JMenuItem mntmRestar = new JMenuItem("Restar");
+		mnOperaciones.add(mntmRestar);
 		
-		JMenuItem mnitMult = new JMenuItem("Multiplicar");
-		mnOperacion.add(mnitMult);
+		JMenuItem mntmMultiplicar = new JMenuItem("Multiplicar");
+		mnOperaciones.add(mntmMultiplicar);
 		
-		JMenuItem mnitEsc = new JMenuItem("ProductoEscalar");
-		mnOperacion.add(mnitEsc);
-		frmMatrixCalculator.getContentPane().setLayout(new CardLayout(0, 0));
+		JMenuItem mntmProductoEscalar = new JMenuItem("Producto Escalar");
+		mnOperaciones.add(mntmProductoEscalar);
+		
+		JMenuItem mntmTraspuesta = new JMenuItem("Traspuesta");
+		mnOperaciones.add(mntmTraspuesta);
+		frmMatrixCalculator.getContentPane().setLayout(null);
+		
+		JLabel lblBienvenidoSeleccionaUna = new JLabel("Bienvenido, selecciona una operación en el menú superior para comenzar");
+		lblBienvenidoSeleccionaUna.setBounds(12, 136, 568, 15);
+		frmMatrixCalculator.getContentPane().add(lblBienvenidoSeleccionaUna);
 	}
 }
