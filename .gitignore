@@ -1,5 +1,4 @@
-matrix/target/*
-/target/
+target/
 .metadata
 bin/
 tmp/

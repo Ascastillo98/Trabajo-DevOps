@@ -1,6 +1,5 @@
 package es.uca.mps.matrix.gui;
 
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

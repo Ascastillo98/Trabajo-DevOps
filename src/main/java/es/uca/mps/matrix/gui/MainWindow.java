@@ -1,6 +1,8 @@
 package es.uca.mps.matrix.gui;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -8,10 +10,11 @@ import javax.swing.UIManager;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.FlowLayout;
 
 public class MainWindow {
 
@@ -84,10 +87,10 @@ public class MainWindow {
 		
 		JMenuItem mntmTraspuesta = new JMenuItem("Traspuesta");
 		mnOperaciones.add(mntmTraspuesta);
-		frmMatrixCalculator.getContentPane().setLayout(null);
+		frmMatrixCalculator.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JLabel lblBienvenidoSeleccionaUna = new JLabel("Bienvenido, selecciona una operación en el menú superior para comenzar");
-		lblBienvenidoSeleccionaUna.setBounds(12, 136, 568, 15);
-		frmMatrixCalculator.getContentPane().add(lblBienvenidoSeleccionaUna);
+		JLabel lblWelcome = new JLabel("Bienvenido, seleccione una de las opciones del menú superior para continuar");
+		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
+		frmMatrixCalculator.getContentPane().add(lblWelcome);
 	}
 }
