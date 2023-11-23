@@ -22,12 +22,13 @@ pipeline {
             }
         }
         stage('Scan') {
+            steps {
                 script {
                     withSonarQubeEnv('SonarQube') {
                         sh 'mvn sonar:sonar -Dsonar.projectKey=${SONAR_COMMAND}'
                     }
                 }
-            
+            }
         }
     }
 }
