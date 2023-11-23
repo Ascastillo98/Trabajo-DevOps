@@ -13,9 +13,12 @@ public class Matrix {
 	int filas;
 	int columnas;
 	
-	public Matrix(int[][] valores) {
-		this.filas = valores.length;
-		this.columnas = valores[0].length;
+	public Matrix(int n, int m, int[][] valores) {
+		if(n != m) {
+			throw new IllegalArgumentException("Las matrices deben ser cuadradas");
+		}
+		this.filas = m;
+		this.columnas = n;
 		this.matrix = new int[filas][columnas];
 		
 		for(int i = 0; i < filas; i++) {
@@ -25,12 +28,15 @@ public class Matrix {
 		}
 	}
 	
-	public Matrix() {
+	public Matrix(int dimensiones) {
+		this.matrix = new int[dimensiones][dimensiones];
 		for(int i = 0; i < filas; i++) {
 			for(int j = 0; j < columnas; j++) {
-				matrix[i][j] = 0;
+				matrix[i][j] = 4;
 			}
 		}
+		this.filas = matrix.length;
+		this.columnas = matrix[0].length;
 	}
 	
 	public int getFilas() {
@@ -49,4 +55,16 @@ public class Matrix {
 		this.matrix[i][j] = valor;
 	}
 	
+	public void mostrar() {
+		for(int i = 0; i < getFilas(); i++) {
+			for(int j = 0; j < getColumnas(); j++) {
+				System.out.print(getValor(i, j) + " ");
+			}
+			System.out.println();
+		}
+		System.out.println();
+	}
+	
 }
+
+
