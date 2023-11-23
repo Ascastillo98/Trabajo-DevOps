@@ -28,5 +28,6 @@ pipeline {
                     sh 'mvn sonar:sonar -Dsonar.projectKey=$SONAR_COMMAND'
                 }
             }
+        }
     }
 }
