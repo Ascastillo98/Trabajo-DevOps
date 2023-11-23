@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Scan'){
             steps{
-                echo $SONAR_COMMAND
+                echo "TEST"
                 withSonarQubeEnv('sonarqube') {
                     sh 'mvn sonar:sonar -Dsonar.projectKey=Ascastillo98_Trabajo-DevOps'
                 }
