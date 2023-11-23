@@ -25,7 +25,7 @@ pipeline {
             steps{
                 echo $SONAR_COMMAND
                 withSonarQubeEnv('sonarqube') {
-                    sh 'mvn sonar:sonar -Dsonar.projectKey=$SONAR_COMMAND'
+                    sh 'mvn sonar:sonar -Dsonar.projectKey=Ascastillo98_Trabajo-DevOps'
                 }
             }
         }
