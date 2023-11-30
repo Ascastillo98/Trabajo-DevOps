@@ -27,8 +27,8 @@ public class MatrixTest {
             new Matrix(3, 4, new int[][]{{1, 2, 3, 4}, {4, 5, 6, 7}, {7, 8, 9, 10}});
             // Si no se lanza la excepción, falla la prueba
             assert false : "Expected IllegalArgumentException, but no exception was thrown.";
-        } catch (IllegalArgumentException ignored) {
-            // Se espera una excepción, no se hace nada
+        } catch (IllegalArgumentException e) {
+            assertEquals("Las matrices deben ser cuadradas", e.getMessage());
         }
     }
 
@@ -38,8 +38,9 @@ public class MatrixTest {
             new Matrix(0, 0, new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
             // Si no se lanza la excepción, falla la prueba
             assert false : "Expected IllegalArgumentException, but no exception was thrown.";
-        } catch (IllegalArgumentException ignored) {
+        } catch (IllegalArgumentException e) {
             // Se espera una excepción, no se hace nada
+        	assertEquals("Las matrices no pueden ser nulas", e.getMessage());
         }
     }
 
@@ -49,8 +50,8 @@ public class MatrixTest {
             new Matrix(4, 4, new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
             // Si no se lanza la excepción, falla la prueba
             assert false : "Expected IllegalArgumentException, but no exception was thrown.";
-        } catch (IllegalArgumentException ignored) {
-            // Se espera una excepción, no se hace nada
+        } catch (IllegalArgumentException e) {
+            assertEquals("Las dimensiones no coinciden con la matriz", e.getMessage());
         }
     }
 

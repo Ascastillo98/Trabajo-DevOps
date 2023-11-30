@@ -2,20 +2,14 @@ package es.uca.mps.matrix.core;
 
 public class Opmatrix {
 
-	private static Matrix A;
-	private static Matrix B;
-	private static Matrix C;
 	
-	public Opmatrix(Matrix A, Matrix B, Matrix C) {
-		if(A.getFilas() != B.getFilas() || A.getFilas() != C.getFilas()) {
-			throw new IllegalArgumentException("Las matrices deben tener las mismas dimensiones");
-		}
-		this.A = A;
-		this.B = B;
-		this.C = C;
-	}
+	 private Opmatrix() {
+	        throw new IllegalStateException("Utility class");
+	    }
 	
-	public static void addMatrix() {
+	public static void addMatrix(Matrix A, Matrix B, Matrix C) {
+		checkMatrix(A, B);
+		checkMatrix(A, C);
 		for(int i = 0; i < A.getFilas(); i++) {
 			for(int j = 0; j < A.getColumnas(); j++) {
 				int suma = A.getValor(i, j) +  B.getValor(i, j);
@@ -24,7 +18,9 @@ public class Opmatrix {
 		}
 	}
 	
-	public static void subtractionMatrix() {
+	public static void subtractionMatrix(Matrix A, Matrix B, Matrix C) {
+		checkMatrix(A, B);
+		checkMatrix(A, C);
 		for(int i = 0; i < A.getFilas(); i++) {
 			for(int j = 0; j < A.getColumnas(); j++) {
 				int resta = A.getValor(i, j) -  B.getValor(i, j);
@@ -33,7 +29,9 @@ public class Opmatrix {
 		}
 	}
 	
-	public static void multiplyMatrix() {
+	public static void multiplyMatrix(Matrix A, Matrix B, Matrix C) {
+		checkMatrix(A, B);
+		checkMatrix(A, C);
 		for(int i = 0; i < A.getFilas(); i++) {
 			for(int j = 0; j < A.getColumnas(); j++) {
 				int mult = 0;
@@ -44,7 +42,8 @@ public class Opmatrix {
 		}
 	}
 	
-	public static void scalarProductMatrix(int prod) {
+	public static void scalarProductMatrix(Matrix A, Matrix C, int prod) {
+		checkMatrix(A, C);
 		for(int i = 0; i < A.getFilas(); i++) {
 			for(int j = 0; j < A.getColumnas(); j++) {
 				C.setValor(i, j, prod * A.getValor(i, j));
@@ -52,11 +51,18 @@ public class Opmatrix {
 		}
 	}
 	
-	public static void transposedMatrix() {
+	public static void transposedMatrix(Matrix A, Matrix C) {
+		checkMatrix(A, C);
 		for(int i = 0; i < A.getFilas(); i++) {
 			for(int j = 0; j < A.getColumnas(); j++) {
 				C.setValor(i, j, A.getValor(j, i));  //Asignamos a C[i][j] el valor de A[j][i]
 			}
+		}
+	}
+	
+	private static void checkMatrix(Matrix A, Matrix B) {
+		if(A.getFilas() != B.getFilas()) {
+			throw new IllegalArgumentException("Las matrices deben tener las mismas dimensiones");
 		}
 	}
 	

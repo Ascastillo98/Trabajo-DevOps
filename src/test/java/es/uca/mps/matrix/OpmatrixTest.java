@@ -24,40 +24,40 @@ public class OpmatrixTest {
         A = new Matrix(3, 3, valuesA);
         B = new Matrix(3, 3, valuesB);
         C = new Matrix(3);
-        op = new Opmatrix(A, B, C);
+        //op = new Opmatrix(A, B, C);
     }
 
     @Test
     public void testAddMatrix() {
-        op.addMatrix();
+        op.addMatrix(A, B, C);
         Matrix expected = new Matrix(3, 3, new int[][]{{10, 10, 10}, {10, 10, 10}, {10, 10, 10}});
         assertEquals("AddMatrix result is incorrect", expected, C);
     }
 
     @Test
     public void testSubtractionMatrix() {
-        op.subtractionMatrix();
+        op.subtractionMatrix(A, B, C);
         Matrix expected = new Matrix(3, 3, new int[][]{{-8, -6, -4}, {-2, 0, 2}, {4, 6, 8}});
         assertEquals("SubtractionMatrix result is incorrect", expected, C);
     }
 
     @Test
     public void testMultiplyMatrix() {
-        op.multiplyMatrix();
+        op.multiplyMatrix(A, B, C);
         Matrix expected = new Matrix(3, 3, new int[][]{{30, 24, 18}, {84, 69, 54}, {138, 114, 90}});
         assertEquals("MultiplyMatrix result is incorrect", expected, C);
     }
 
     @Test
     public void testScalarProductMatrix() {
-        op.scalarProductMatrix(2);
+        op.scalarProductMatrix(A, C, 2);
         Matrix expected = new Matrix(3, 3, new int[][]{{2, 4, 6}, {8, 10, 12}, {14, 16, 18}});
         assertEquals("ScalarProductMatrix result is incorrect", expected, C);
     }
 
     @Test
     public void testTransposedMatrix() {
-        op.transposedMatrix();
+        op.transposedMatrix(A, C);
         Matrix expected = new Matrix(3, 3, new int[][]{{1, 4, 7}, {2, 5, 8}, {3, 6, 9}});
         assertEquals("TransposedMatrix result is incorrect", expected, C);
     }
@@ -71,11 +71,11 @@ public class OpmatrixTest {
         Matrix B2 = new Matrix(3, 3, valuesB);
         Matrix C2 = new Matrix(2);
 
-        Opmatrix op;  // Usar la instancia creada como miembro
+       //Opmatrix op;  
 
         // Intentar sumar matrices con dimensiones diferentes debería lanzar una excepción
         try {
-            op = new Opmatrix(A2, B2, C2);
+            op.addMatrix(A2, B2, C2);
             fail("Expected IllegalArgumentException, but no exception was thrown.");
         } catch (IllegalArgumentException e) {
             // Se espera una excepción, no se hace nada

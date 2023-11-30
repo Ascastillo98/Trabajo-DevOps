@@ -9,7 +9,7 @@ package es.uca.mps.matrix.core;
 
 public class Matrix {
 	
-	int[][] matrix;
+	int[][] matriz;
 	int filas;
 	int columnas;
 	
@@ -17,7 +17,7 @@ public class Matrix {
 		if(n != m) {
 			throw new IllegalArgumentException("Las matrices deben ser cuadradas");
 		}
-		if(n == 0 || m == 0) {
+		if(n == 0) {
 			throw new IllegalArgumentException("Las matrices no pueden ser nulas");
 		}
 		if(n != valores[0].length || m != valores.length) {
@@ -26,20 +26,20 @@ public class Matrix {
 		
 		this.filas = m;
 		this.columnas = n;
-		this.matrix = new int[filas][columnas];
+		this.matriz = new int[filas][columnas];
 		
 		for(int i = 0; i < filas; i++) {
 			for(int j = 0; j < columnas; j++) {
-				matrix[i][j] = valores[i][j];
+				matriz[i][j] = valores[i][j];
 			}
 		}
 	}
 	
 	public Matrix(int dimensiones) {
-		this.matrix = new int[dimensiones][dimensiones];
+		this.matriz = new int[dimensiones][dimensiones];
 		for(int i = 0; i < filas; i++) {
 			for(int j = 0; j < columnas; j++) {
-				matrix[i][j] = 0;
+				matriz[i][j] = 0;
 			}
 		}
 		this.filas = dimensiones;
@@ -55,22 +55,13 @@ public class Matrix {
 	}
 	
 	public int getValor(int i, int j) {
-		return this.matrix[i][j];
+		return this.matriz[i][j];
 	}
 	
 	public void setValor(int i, int j, int valor) {
-		this.matrix[i][j] = valor;
+		this.matriz[i][j] = valor;
 	}
 	
-	public void mostrar() {
-		for(int i = 0; i < getFilas(); i++) {
-			for(int j = 0; j < getColumnas(); j++) {
-				System.out.print(getValor(i, j) + " ");
-			}
-			System.out.println();
-		}
-		//System.out.println();
-	}
 	
 	@Override
     public String toString() {
@@ -98,13 +89,28 @@ public class Matrix {
 	    }
 	    for (int i = 0; i < filas; i++) {
 	        for (int j = 0; j < columnas; j++) {
-	            if (matrix[i][j] != otherMatrix.matrix[i][j]) {
+	            if (matriz[i][j] != otherMatrix.matriz[i][j]) {
 	                return false;
 	            }
 	        }
 	    }
 	    return true;
 	}
+	
+	@Override
+	public int hashCode() {
+	    final int prime = 31;
+	    int result = 1;
+	    result = prime * result + filas;
+	    result = prime * result + columnas;
+	    for (int i = 0; i < filas; i++) {
+	        for (int j = 0; j < columnas; j++) {
+	            result = prime * result + matriz[i][j];
+	        }
+	    }
+	    return result;
+	}
+
 
 	
 }
