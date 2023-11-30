@@ -1,5 +1,7 @@
 package es.uca.mps.matrix.core;
 
+import java.util.Arrays;
+
 /**
  * Hello world!
  *
@@ -28,11 +30,9 @@ public class Matrix {
 		this.columnas = n;
 		this.matriz = new int[filas][columnas];
 		
-		for(int i = 0; i < filas; i++) {
-			for(int j = 0; j < columnas; j++) {
-				matriz[i][j] = valores[i][j];
-			}
-		}
+		for (int i = 0; i < filas; i++) {
+	        matriz[i] = Arrays.copyOf(valores[i], columnas);
+	    }
 	}
 	
 	public Matrix(int dimensiones) {

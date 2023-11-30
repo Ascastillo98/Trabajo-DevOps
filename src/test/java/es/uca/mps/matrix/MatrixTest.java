@@ -20,6 +20,19 @@ public class MatrixTest {
             }
         }
     }
+    
+    @Test 
+    public void testMatrixDefaultConstructor() {
+    	int dimension = 4;
+    	int expected = 0;
+    	Matrix A = new Matrix(dimension);
+    	
+    	for(int i = 0; i < dimension; i++) {
+    		for( int j = 0; j < dimension; j++) {
+    			assertEquals(expected, A.getValor(i, j));
+    		}
+    	}
+    }
 
     @Test
     public void testInvalidMatrixCreation() {

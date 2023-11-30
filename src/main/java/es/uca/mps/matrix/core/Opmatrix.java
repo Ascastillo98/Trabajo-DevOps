@@ -5,7 +5,7 @@ public class Opmatrix {
 	
 	 private Opmatrix() {
 	        throw new IllegalStateException("Utility class");
-	    }
+	 }
 	
 	public static void addMatrix(Matrix A, Matrix B, Matrix C) {
 		checkMatrix(A, B);
