@@ -24,7 +24,6 @@ public class OpmatrixTest {
         A = new Matrix(3, 3, valuesA);
         B = new Matrix(3, 3, valuesB);
         C = new Matrix(3);
-        //op = new Opmatrix(A, B, C);
     }
 
     @Test
@@ -71,7 +70,7 @@ public class OpmatrixTest {
         Matrix B2 = new Matrix(3, 3, valuesB);
         Matrix C2 = new Matrix(2);
 
-       //Opmatrix op;  
+       
 
         // Intentar sumar matrices con dimensiones diferentes debería lanzar una excepción
         try {
