@@ -59,6 +59,17 @@ public class Opmatrix {
 			}
 		}
 	}
+
+	public static void multiplyMatrixCellByCell(Matrix a, Matrix b, Matrix c) {
+		checkMatrix(a, b);
+		checkMatrix(a, c);
+		for(int i = 0; i < a.getFilas(); i++) {
+			for(int j = 0; j < a.getColumnas(); j++) {
+				int mult = a.getValor(i, j) * b.getValor(i, j);
+				c.setValor(i, j, mult);
+			}
+		}
+	}
 	
 	private static void checkMatrix(Matrix a, Matrix b) {
 		if(a.getFilas() != b.getFilas()) {

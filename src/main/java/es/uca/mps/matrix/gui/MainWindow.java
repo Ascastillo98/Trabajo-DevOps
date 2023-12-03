@@ -85,6 +85,10 @@ public class MainWindow {
 		
 		JMenuItem mntmTraspuesta = new JMenuItem("Traspuesta");
 		mnOperaciones.add(mntmTraspuesta);
+
+		JMenuItem mntmMultCellByCell = new JMenuItem("Multiplicar Celda a Celda");
+		mnOperaciones.add(mntmMultCellByCell);
+		
 		frmMatrixCalculator.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JLabel lblWelcome = new JLabel("Bienvenido, seleccione una de las opciones del menú superior para continuar");

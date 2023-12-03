@@ -80,4 +80,11 @@ public class OpmatrixTest {
             // Se espera una excepción, no se hace nada
         }
     }
+
+    @Test
+    public void testMultiplyMatrixCellByCell() {
+        op.multiplyMatrixCellByCell(A, B, C);
+        Matrix expected = new Matrix(3, 3, new int[][]{{9, 16, 21}, {24, 25, 24}, {21, 16, 9}});
+        assertEquals("MultiplyMatrixCellByCell result is incorrect", expected, C);
+    }
 }
